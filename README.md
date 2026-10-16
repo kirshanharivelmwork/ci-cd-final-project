@@ -1,38 +1,31 @@
 # CI/CD Tools and Practices Final Project Template
 
-This repository contains the template to be used for the Final Project for the Coursera course **CI/CD Tools and Practices**.
+## Project name
 
-## Usage
+**ci-cd-final-project**
 
-This repository is to be used as a template to create your own repository in your own GitHub account. No need to Fork it as it has been set up as a Template. This will avoid confusion when making Pull Requests in the future.
+This repository contains the IBM / Coursera **Continuous Integration and Continuous Delivery (CI/CD) Final Project**. The sample Flask counter microservice is validated with GitHub Actions and delivered using Tekton and OpenShift Pipelines.
 
-From the GitHub **Code** page, press the green **Use this template** button to create your own repository from this template.
+## Continuous Integration
 
-Name your repo: `ci-cd-final-project`.
+The CI workflow at [`.github/workflows/workflow.yml`](.github/workflows/workflow.yml) runs on pushes and pull requests to `main`. It checks out the source, installs dependencies, lints with flake8, and runs nose unit tests with coverage.
 
-## Setup
+## Continuous Delivery
 
-After entering the lab environment you will need to run the `setup.sh` script in the `./bin` folder to install the prerequisite software.
+Tekton task definitions in [`.tekton/tasks.yml`](.tekton/tasks.yml) include a workspace cleanup task and nose test task. The lab's OpenShift pipeline links these with git-clone, flake8, buildah, and an OpenShift deployment step.
 
-```bash
-bash bin/setup.sh
-```
-
-Then you must exit the shell and start a new one for the Python virtual environment to be activated.
+## Development setup
 
 ```bash
-exit
+bash ./bin/setup.sh
 ```
 
-## Tasks
-
+Close the terminal with `exit` and open a new terminal to activate the Python virtual environment.
 
 ## License
 
-Licensed under the Apache License. See [LICENSE](/LICENSE)
+Licensed under the Apache-2.0 License. See [LICENSE](LICENSE).
 
 ## Author
 
-Skills Network
-
-## <h3 align="center"> © IBM Corporation 2023. All rights reserved. <h3/>
+Skills Network (template); project implementation for the IBM CI/CD final assignment.
